@@ -1,153 +1,3 @@
-################### ############################################
-# MANDATORY FLAGS # These flags HAVE TO be set/changed by you! #
-################### ############################################
-
-# Device codename
-SHRP_DEVICE_CODE := gta4l
-
-# Path of your SHRP device tree
-SHRP_PATH := device/samsung/$(SHRP_DEVICE_CODE)
-
-# Maintainer name
-SHRP_MAINTAINER := MRX7014
-
-# Recovery Type (for "About" section only)
-SHRP_REC_TYPE := SAR
-
-# Device Type (for "About" section only)
-SHRP_DEVICE_TYPE := A_Only
-
-# Your device's recovery path, dont use blindly
-SHRP_REC := /dev/block/platform/soc/4744000.sdhci/by-name/recovery
-
-################### ################################################################################
-# IMPORTANT FLAGS # These are usually good to check - at least if the defaults are what you expect #
-################### ################################################################################
-
-# Emergency DownLoad mode (0 = no EDL mode, 1 = EDL mode available)
-SHRP_EDL_MODE := 0
-
-# internal storage path
-SHRP_INTERNAL := /sdcard
-
-# If your device has an external sdcard
-SHRP_EXTERNAL := /external_sd
-
-# USB OTG path
-SHRP_OTG := /usb_otg
-
-# Flashlight
-SHRP_FLASH := 1
-
-################## #########################################################################
-# OPTIONAL FLAGS # Stuff which highly depends on your device and / or personal preferences #
-################## #########################################################################
-
-# Use this flag only if your device is A/B.
-#SHRP_AB := true
-
-# SHRP padding flag (for rounded corner devices only)
-SHRP_STATUSBAR_RIGHT_PADDING := 20
-# Default (for LEFT): 20
-SHRP_STATUSBAR_LEFT_PADDING := 20
-
-# For notch devices
-#SHRP_NOTCH := true
-
-# SHRP Express, enables on-the-fly theme patching (also persistent) + persistent lock
-SHRP_EXPRESS := true
-
-# SHRP Express use Data save shrp files inside /data instead of /system
-SHRP_EXPRESS_USE_DATA := true
-
-# SHRP Dark mode, use this flag to have dark theme set by default
-SHRP_DARK := true
-
-# custom led paths for flashlight
-#SHRP_CUSTOM_FLASHLIGHT := true
-#SHRP_FONP_1 := /sys/class/leds/led:torch_0/brightness
-#SHRP_FONP_2 := /sys/class/leds/led:torch_1/brightness
-#SHRP_FONP_3 := /sys/class/leds/led:switch/brightness
-
-# Max brightness of flashlight
-#SHRP_FLASH_MAX_BRIGHTNESS := 200
-
-# Force mount system in /system despite SAR policy
-SHRP_NO_SAR_AUTOMOUNT := true
-
-################################## ##############################################
-# SHRP DEFAULT ADDONS - OPTIONAL # Default SHRP addon behavior - fully optional #
-################################## ##############################################
-
-# Addon - Substratum Overlay (OMS -Normal- disabler)
-# Default (if not set) is not skipping this addon (i.e. add it)
-# Ensure you understood the above note on the default behavior!
-#SHRP_SKIP_DEFAULT_ADDON_1 := true
-# Default (if not set) is NOT adding it to the ramdisk but internal storage.
-# To store this addon into the recovery ramdisk instead set to "true" here.
-# Ensure you understood the above note on the default behavior!
-INC_IN_REC_ADDON_1 := true
-
-# Addon - Substratum Overlay (OMS -legacy- disabler)
-# Default (if not set) is not skipping this addon (i.e. add it)
-# Ensure you understood the above note on the default behavior!
-#SHRP_SKIP_DEFAULT_ADDON_2 := true
-# Default (if not set) is NOT adding it to the ramdisk but internal storage.
-# To store this addon into the recovery ramdisk instead set to "true" here.
-# Ensure you understood the above note on the default behavior!
-INC_IN_REC_ADDON_2 := true
-
-# Addon - Clear Fingerprint (remove fingerprint lock from system)
-# Default (if not set) is not skipping this addon (i.e. add it)
-# Ensure you understood the above note on the default behavior!
-#SHRP_SKIP_DEFAULT_ADDON_3 := true
-# Default (if not set) is NOT adding it to the ramdisk but internal storage.
-# To store this addon into the recovery ramdisk instead set to "true" here.
-# Ensure you understood the above note on the default behavior!
-INC_IN_REC_ADDON_3 := true
-
-# Addon - Force Encryption (remove force encryption from your device)
-# Default (if not set) is not skipping this addon (i.e. add it)
-# Ensure you understood the above note on the default behavior!
-#SHRP_SKIP_DEFAULT_ADDON_4 := true
-# Default (if not set) is NOT adding it to the ramdisk but internal storage.
-# To store this addon into the recovery ramdisk instead set to "true" here.
-# Ensure you understood the above note on the default behavior!
-INC_IN_REC_ADDON_4 := true
-
-
-# Default (if not set) is NOT adding it to the ramdisk but internal storage.
-# To store magisk zip into the recovery ramdisk instead set to "true" here.
-# Ensure you understood the above note on the default behavior!
-INC_IN_REC_MAGISK := true
-
-# Default (if not set) will show magisk root and unroot option inside the recovery.
-# To hide the prebuilt magisk flash option from recovery, set value to "true".
-# Ensure you understood the above note on the default behavior!
-SHRP_EXCLUDE_MAGISK_FLASH := true
-
-############################ #########################################################
-# CUSTOM ADDONS - OPTIONAL # Custom addons! Yea fully optional but.. GREAT STUFF! :) #
-############################ #########################################################
-
-# Addon #1 - Name
-SHRP_EXTERNAL_ADDON_1_NAME := "LOS Recorder"
-# Addon #1 - Description
-SHRP_EXTERNAL_ADDON_1_INFO := "A magisk module which add lineageOS recorder into your system"
-# Addon #1 - Addon file name as ZIP (zip format is required)
-SHRP_EXTERNAL_ADDON_1_FILENAME := "los_recorder.zip"
-# Addon #1 - Free defineable button text the user need to press to actually install that addon
-# (Examples: Ok, Install, Flask, Enable, Disable, etc)
-SHRP_EXTERNAL_ADDON_1_BTN_TEXT := "Install"
-# Addon #1 - Text beeing shown when the installation was successful
-SHRP_EXTERNAL_ADDON_1_SUCCESSFUL_TEXT := "Installed"
-# Addon #1 - Inject the addon into the recovery (if so: be sure that it will fit into the partition)
-# Default (if not set) is NOT adding this addon into the recovery ramdisk. That means:
-# If you do NOT set this the addon will be saved into the internal storage (i.e: $(SHRP_INTERNAL)/SHRP/addons)
-# Set this variable when true ONLY (do not use "false" or similiar)
-SHRP_INC_IN_REC_EXTERNAL_ADDON_1 := true
-
-
 #
 # Copyright 2024 The Android Open Source Project
 #
@@ -345,3 +195,34 @@ TW_NO_EXFAT_FUSE := false
 TW_NO_HAPTICS := true
 TW_NO_LEGACY_PROPS := true
 TWRP_INCLUDE_LOGCAT := true
+
+# SHRP_Flags
+SHRP_DEVICE_CODE := gta4l
+SHRP_PATH := device/samsung/$(SHRP_DEVICE_CODE)
+SHRP_MAINTAINER := MRX7014
+SHRP_REC_TYPE := SAR
+SHRP_DEVICE_TYPE := A_Only
+SHRP_REC := /dev/block/platform/soc/4744000.sdhci/by-name/recovery
+SHRP_EDL_MODE := 0
+SHRP_INTERNAL := /sdcard
+SHRP_EXTERNAL := /external_sd
+SHRP_OTG := /usb_otg
+SHRP_FLASH := 0
+SHRP_STATUSBAR_RIGHT_PADDING := 20
+SHRP_STATUSBAR_LEFT_PADDING := 20
+SHRP_EXPRESS := true
+SHRP_EXPRESS_USE_DATA := true
+SHRP_DARK := true
+SHRP_NO_SAR_AUTOMOUNT := true
+INC_IN_REC_ADDON_1 := true
+INC_IN_REC_ADDON_2 := true
+INC_IN_REC_ADDON_3 := true
+INC_IN_REC_ADDON_4 := true
+INC_IN_REC_MAGISK := true
+SHRP_EXCLUDE_MAGISK_FLASH := true
+SHRP_EXTERNAL_ADDON_1_NAME := "LOS Recorder"
+SHRP_EXTERNAL_ADDON_1_INFO := "A magisk module which add lineageOS recorder into your system"
+SHRP_EXTERNAL_ADDON_1_FILENAME := "los_recorder.zip"
+SHRP_EXTERNAL_ADDON_1_BTN_TEXT := "Install"
+SHRP_EXTERNAL_ADDON_1_SUCCESSFUL_TEXT := "Installed"
+SHRP_INC_IN_REC_EXTERNAL_ADDON_1 := true
