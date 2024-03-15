@@ -1,29 +1,4 @@
 #
-# Copyright 2024 The Android Open Source Project
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
-
-# This contains the module build definitions for the hardware-specific
-# components for this device.
-#
-# As much as possible, those components should be built unconditionally,
-# with device-specific names to avoid collisions, to avoid device-specific
-# bitrot and build breakages. Building a component unconditionally does
-# *not* include it on all devices, so it is safe even with hardware-specific
-# components.
-
-#
 # Copyright (C) 2024 The Android Open Source Project
 # Copyright (C) 2024 The TWRP Open Source Project
 #
@@ -159,8 +134,8 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_SUPPRESS_SECURE_ERASE := true
 BOARD_HAS_FLIPPED_SCREEN := true
 RECOVERY_SDCARD_ON_DATA := true
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
-TARGET_RECOVERY_WIPE := $(DEVICE_PATH)/recovery.wipe
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
+TARGET_RECOVERY_WIPE := $(DEVICE_PATH)/recovery/root/system/etc/recovery.wipe
 TARGET_RECOVERY_QCOM_RTC_FIX := true
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_RECOVERY_DEVICE_MODULES += debuggerd
@@ -176,7 +151,7 @@ BOARD_USES_QCOM_FBE_DECRYPTION := true
 PRODUCT_ENFORCE_VINTF_MANIFEST := true
 
 # TWRP Configuration
-TW_DEVICE_VERSION := 1
+TW_DEVICE_VERSION := 1_MRX7014
 TW_THEME := portrait_hdpi
 TW_EXTRA_LANGUAGES := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
@@ -196,34 +171,3 @@ TW_NO_EXFAT_FUSE := false
 TW_NO_HAPTICS := true
 TW_NO_LEGACY_PROPS := true
 TWRP_INCLUDE_LOGCAT := true
-
-# SHRP_Flags
-SHRP_DEVICE_CODE := gta4l
-SHRP_PATH := device/samsung/$(SHRP_DEVICE_CODE)
-SHRP_MAINTAINER := MRX7014
-SHRP_REC_TYPE := SAR
-SHRP_DEVICE_TYPE := A_Only
-SHRP_REC := /dev/block/platform/soc/4744000.sdhci/by-name/recovery
-SHRP_EDL_MODE := 0
-SHRP_INTERNAL := /sdcard
-SHRP_EXTERNAL := /external_sd
-SHRP_OTG := /usb_otg
-SHRP_FLASH := 0
-SHRP_STATUSBAR_RIGHT_PADDING := 20
-SHRP_STATUSBAR_LEFT_PADDING := 20
-SHRP_EXPRESS := true
-SHRP_EXPRESS_USE_DATA := true
-SHRP_DARK := true
-SHRP_NO_SAR_AUTOMOUNT := true
-INC_IN_REC_ADDON_1 := true
-INC_IN_REC_ADDON_2 := true
-INC_IN_REC_ADDON_3 := true
-INC_IN_REC_ADDON_4 := true
-INC_IN_REC_MAGISK := true
-SHRP_EXCLUDE_MAGISK_FLASH := true
-SHRP_EXTERNAL_ADDON_1_NAME := "LOS Recorder"
-SHRP_EXTERNAL_ADDON_1_INFO := "A magisk module which add lineageOS recorder into your system"
-SHRP_EXTERNAL_ADDON_1_FILENAME := "los_recorder.zip"
-SHRP_EXTERNAL_ADDON_1_BTN_TEXT := "Install"
-SHRP_EXTERNAL_ADDON_1_SUCCESSFUL_TEXT := "Installed"
-SHRP_INC_IN_REC_EXTERNAL_ADDON_1 := true
